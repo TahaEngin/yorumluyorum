@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yorum/SignUpScreen.dart';
 import 'dart:convert' show utf8;
-
+import 'HomeScreen.dart';
 import 'Templates/text_template.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,13 +21,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children:[
-                Image.asset("Assets/LourLogo.jpg"),
                 Temp_TextState(Icons.mail_outline,"E-mail", controllert,false,false),
                 Temp_TextState(Icons.key, "Şifre", controllerc,true,true),
                 CheckboxListTile(
@@ -61,6 +60,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: (){
+                        mail = controllert.text;
+                        sifre = controllerc.text;
+                        print(mail);
+                        print(sifre);
+                        if (mail == "adm" && sifre == "adm"){
+                          print("Giriş Başarılı");
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+
+
+                        }
+                        else{
+                          print("Giriş Başarısız");
+                        }
                       },
                     ),
                   ),
